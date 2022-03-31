@@ -1,0 +1,60 @@
+
+syntax = "proto3";
+
+package msg;
+
+message MsgAliveReq {
+  uint32 echo = 1;
+}
+
+message MsgAliveRsp {
+  uint32 echo = 1;
+}
+
+message MsgHelloReq {
+  uint32 hello = 1;
+}
+message MsgHelloRsp{
+  uint32 rst = 1;
+}
+
+message MsgByeReq {
+  uint32 bye = 1;
+}
+
+message MsgByeRsp {
+  uint32 rst = 1;
+}
+
+
+message MsgExampleReq {
+  repeated Opt opts = 1;
+}
+
+message MsgExampleRsp {
+  uint32 rst = 1;
+  string desc = 2;
+}
+
+message Opt {
+  oneof data {
+    One one = 1;
+    Two two = 2;
+  }
+}
+
+message One {
+  uint32 x = 1;
+  uint32 y = 2;
+}
+
+message Two {
+  string a = 1;
+  
+  enum TwoType {
+    first = 0;
+    second = 1;
+  }
+
+  TwoType ttype =2;
+}
